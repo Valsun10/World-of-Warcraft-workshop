@@ -54,8 +54,8 @@ const RegisterPage = () => {
             value={email}
           />
         </div>
+        <label htmlFor="password">Enter your Password:</label>
         <div className="password">
-          <label htmlFor="password">Enter your Password:</label>
           <input
             type="password"
             name="password"

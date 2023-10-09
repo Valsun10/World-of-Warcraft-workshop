@@ -58,3 +58,9 @@
   font-size: 30px;
   padding-right: 15px;
 }
+
+.register-form label {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
