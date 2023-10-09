@@ -1,0 +1,14 @@
+.guest-title {
+  font-size: 65px;
+  color: burlywood;
+
+  text-align: center;
+  padding-bottom: 45px;
+}
+
+.spinner {
+  color: burlywood;
+  font-size: 60px;
+  text-align: center;
+  height: 60vh;
+}

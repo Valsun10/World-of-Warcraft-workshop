@@ -1,0 +1,9 @@
+.wrapper-cards {
+  max-width: 1720px;
+  width: 100%;
+  height: auto;
+  border: 4px solid darkorange;
+  border-radius: 5px;
+  margin: 100px auto 100px auto;
+  padding: 65px;
+}

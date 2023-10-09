@@ -1,0 +1,65 @@
+.wrapper-card {
+  max-width: 20%;
+  width: 100%;
+  height: 350px;
+  border: 3px solid darkorange;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+  border-radius: 7px;
+  display: inline-block;
+  margin: 0 0 15px 65px;
+  background-color: rgba(241, 128, 36, 0.507);
+}
+
+.img-card {
+  width: 100%;
+  height: 60%;
+}
+
+.name-and-race {
+  width: 100%;
+  height: 25%;
+  text-align: center;
+  color: white;
+  padding-top: 20px;
+}
+
+.card-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15%;
+}
+
+.details {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: burlywood;
+  text-decoration: none;
+  font-size: 20px;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  padding-top: 13px;
+}
+
+.details-normal-user {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: burlywood;
+  text-decoration: none;
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 13px;
+}
+
+.delete {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: burlywood;
+  text-decoration: none;
+  font-size: 20px;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  padding-top: 13px;
+}

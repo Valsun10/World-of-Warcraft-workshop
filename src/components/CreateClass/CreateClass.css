@@ -1,0 +1,40 @@
+.create-class-form {
+  max-width: 1550px;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-top: 50px;
+}
+
+.create-class-form label {
+  max-width: 60%;
+  width: 100%;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.create-class-form input {
+  max-width: 700px;
+  width: 100%;
+  height: 35px;
+  background-color: transparent;
+  border: 1px solid darkorange;
+  color: white;
+  font-size: 24px;
+  padding: 5px;
+  outline: none;
+  margin-top: 50px;
+}
+
+.create-class-heading {
+  font-size: 65px;
+  color: burlywood;
+  letter-spacing: 1.5px;
+  padding-top: 25px;
+  text-align: center;
+}
