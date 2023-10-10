@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProfilePage.css";
+import profilePic from "../../assets/imgs/profilepic.jpg";
 
 import Wrapper from "../Wrapper/Wrapper";
 import { useAuthContext } from "../../context/authContext";
@@ -11,7 +12,7 @@ const ProfilePage = () => {
     <>
       <Wrapper>
         <div className="profile">
-          <img src={user.avatar} alt="profilepic" className="profile-picture" />
+          <img src={profilePic} alt="profilepic" className="profile-picture" />
           <div className="profile-details">
             <h1>Email: {user.email}</h1>
             <p>Name: {user.name}</p>

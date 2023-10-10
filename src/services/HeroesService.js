@@ -1,4 +1,3 @@
-// zaqvkite za vzimaneto na geroi
 const baseURL = "http://localhost:5000";
 
 const GetAllHeroes = async () => {
