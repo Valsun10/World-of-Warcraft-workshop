@@ -40,12 +40,12 @@ const GuestPage = () => {
         pageRangeDisplayed={8}
         pageCount={pageCount}
         previousLabel=" previous"
-        renderOnZeroPageCount={null}
         containerClassName="pagination"
         pageLinkClassName="page-num"
         previousLinkClassName="page-num"
         nextLinkClassName="page-num"
         activeLinkClassName="active"
+        renderOnZeroPageCount={null}
       />
     </Wrapper>
   );

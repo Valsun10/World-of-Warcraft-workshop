@@ -63,3 +63,21 @@
   text-align: center;
   padding-top: 13px;
 }
+
+@media (max-width: 600px) {
+  .wrapper-card {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 800px) {
+  .wrapper-card {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .wrapper-card {
+    max-width: 60%;
+  }
+}

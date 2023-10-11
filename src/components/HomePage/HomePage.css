@@ -40,4 +40,33 @@
 
 .active {
   background-color: darkorange;
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .cards-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+
+  .guest-title {
+    font-size: 28px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1000px) {
+  .cards-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .guest-title {
+    font-size: 47px;
+    margin: 0 auto;
+  }
 }

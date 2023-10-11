@@ -63,3 +63,18 @@
   color: antiquewhite;
   opacity: 0.95;
 }
+
+@media (max-width: 1250px) {
+  .links {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 800px) {
+  .right-nav {
+    display: none;
+  }
+  .left-nav {
+    text-align: center;
+  }
+}
