@@ -4,6 +4,8 @@ import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/AuthService";
 import { useAuthContext } from "../../context/authContext";
+import { IoEyeSharp } from "react-icons/io5";
+import { IoEyeOffSharp } from "react-icons/io5";
 
 const LoginPage = () => {
   const [emailInputValue, setEmailInputValue] = useState("");
@@ -16,6 +18,7 @@ const LoginPage = () => {
 
   const handleShowPassword = () => {
     setShowPassword((state) => !state);
+    setIsValid((state) => !state);
   };
 
   const submitHandler = (e) => {
@@ -68,7 +71,7 @@ const LoginPage = () => {
             value={passwordInputValue}
           />
           <div className="show-pass" onClick={handleShowPassword}>
-            show
+            {isValid ? <IoEyeSharp /> : <IoEyeOffSharp />}
           </div>
         </div>
         <button className="btn">Login</button>

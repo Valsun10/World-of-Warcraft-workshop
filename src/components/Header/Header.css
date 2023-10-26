@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 15px 6px #00000029;
 }
 
 .header::before {
@@ -66,7 +67,7 @@
 
 @media (max-width: 1250px) {
   .links {
-    font-size: 17px;
+    font-size: 16px;
   }
 }
 
@@ -76,5 +77,8 @@
   }
   .left-nav {
     text-align: center;
+  }
+  .links {
+    font-size: 12px;
   }
 }

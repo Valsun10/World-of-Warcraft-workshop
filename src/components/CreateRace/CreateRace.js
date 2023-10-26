@@ -15,9 +15,8 @@ const CreateRace = () => {
   const abilities = [abilityOne, abilityTwo, abilityThree];
 
   useEffect(() => {
-    classAndRaceService.getAllClasses(1, 10).then((data) => {
+    classAndRaceService.getAllClasses(1, 15).then((data) => {
       setClasses(data.payload.docs);
-      console.log(classIdValue);
     });
   }, [classIdValue]);
 

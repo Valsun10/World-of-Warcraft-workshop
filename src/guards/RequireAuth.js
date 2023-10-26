@@ -4,6 +4,7 @@ import { useAuthContext } from "../context/authContext";
 
 const RequireAuth = ({ children }) => {
   const { user } = useAuthContext();
+  const token = localStorage.getItem("token");
 
   if (user.accessToken === "") {
     return <Navigate to={"/login"} replace />;

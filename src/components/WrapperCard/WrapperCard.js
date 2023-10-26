@@ -2,17 +2,33 @@ import React from "react";
 import "./WrapperCard.css";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
+import heroesService from "../../services/HeroesService";
 
-const WrapperCard = ({ hero }) => {
+const WrapperCard = ({ hero, heroes, setHeroes }) => {
   const { avatar, name, race, _id } = hero;
   const { user } = useAuthContext();
+
+  const handleDelete = (heroId) => {
+    heroesService.deleteHero(heroId).then((response) => {
+      if (response.success) {
+        const updatedHeroList = heroes.filter((hero) => hero._id !== heroId);
+        setHeroes(updatedHeroList);
+      }
+    });
+  };
 
   const adminNav = (
     <>
       <Link className="details" to={`/details/${_id}`}>
         Details
       </Link>
-      <Link className="delete" to={true}>
+      <Link
+        className="delete"
+        to="/"
+        onClick={() => {
+          handleDelete(`${_id}`);
+        }}
+      >
         Delete
       </Link>
     </>

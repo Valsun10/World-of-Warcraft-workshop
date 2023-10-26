@@ -1,6 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import authService from "../services/AuthService";
-import heroesService from "../services/HeroesService";
+import { createContext, useContext, useState } from "react";
 
 const authContext = createContext();
 
@@ -12,11 +10,8 @@ const initialState = {
   role: "",
 };
 
-const token = localStorage.getItem("token");
-
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(initialState);
-  const [heroes, setHeroes] = useState([]);
 
   const onLogin = (authData) => {
     localStorage.setItem("token", authData.payload.token);
@@ -35,28 +30,11 @@ export const AuthProvider = ({ children }) => {
     setUser(initialState);
   };
 
-  useEffect(() => {
-    if (token) {
-      authService.getCurrentUser(token).then((userData) => {
-        setUser(userData);
-        console.log(user);
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    heroesService.GetAllHeroes().then((res) => {
-      setHeroes(res);
-    });
-  }, [heroes]);
-
   const value = {
     user,
+    setUser,
     onLogin,
     onLogout,
-    token,
-    heroes,
-    setHeroes,
   };
 
   return <authContext.Provider value={value}>{children}</authContext.Provider>;

@@ -3,10 +3,8 @@ import "./CreateHero.css";
 import Wrapper from "../Wrapper/Wrapper";
 import classAndRaceService from "../../services/ClassAndRaceService";
 import heroesService from "../../services/HeroesService";
-import { useAuthContext } from "../../context/authContext";
 
-const CreateHero = () => {
-  const { setHeroes } = useAuthContext();
+const CreateHero = ({ setHeroes }) => {
   const [races, setRaces] = useState([]);
   const [raceName, setRaceName] = useState("");
   const [raceIdValue, setRaceIdValue] = useState("");
@@ -15,9 +13,15 @@ const CreateHero = () => {
 
   const extraAbilityArray = [extraAbility];
 
+  const clearInputs = () => {
+    setRaceName("");
+    setImgURLvalue("");
+    setExtraAbility("");
+  };
+
   useEffect(() => {
     classAndRaceService
-      .getAllRaces(1, 10)
+      .getAllRaces(1, 15)
       .then((response) => setRaces(response.payload.docs));
     console.log(raceName);
   }, [raceIdValue]);
@@ -31,6 +35,8 @@ const CreateHero = () => {
         if (response.success) {
           setHeroes(response.payload);
           alert(`${raceName} has been created!`);
+          clearInputs();
+          console.log(response);
         } else {
           console.log(response.message);
         }

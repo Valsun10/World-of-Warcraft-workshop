@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import WrapperCard from "../WrapperCard/WrapperCard";
 import "./HomePage.css";
-import { useAuthContext } from "../../context/authContext";
 import ReactPaginate from "react-paginate";
+import { Link } from "react-router-dom";
 
-const GuestPage = () => {
-  const { heroes } = useAuthContext();
+const GuestPage = ({ heroes, setHeroes }) => {
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -26,11 +25,21 @@ const GuestPage = () => {
   return (
     <Wrapper>
       <div className="cards-content">
+        <Link to="/usersTable" className="links">
+          TableUsers
+        </Link>
         <h1 className="guest-title">All Cards in the Game</h1>
         {currentItems.length <= 0 ? (
           <p className="spinner">There are no cards in database!</p>
         ) : (
-          currentItems.map((hero) => <WrapperCard key={hero._id} hero={hero} />)
+          currentItems.map((hero) => (
+            <WrapperCard
+              key={hero._id}
+              hero={hero}
+              heroes={heroes}
+              setHeroes={setHeroes}
+            />
+          ))
         )}
       </div>
       <ReactPaginate

@@ -6,19 +6,13 @@ const GetAllHeroes = async () => {
     headers: {
       "content-type": "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTUzMTYwMTEsImV4cCI6MTcwMzA5MjAxMX0.kJ73L8aUAstWxdS7bYYtMKON9n0SmmVqlCUambDKyMc",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
     },
   });
 
-  let result = await response.json();
+  let jsonResult = await response.json();
 
-  if (response.ok) {
-    try {
-      return result.payload.docs;
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  return jsonResult;
 };
 
 const getHero = async (heroId) => {
@@ -26,19 +20,13 @@ const getHero = async (heroId) => {
     method: "GET",
     headers: {
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTUzMTYwMTEsImV4cCI6MTcwMzA5MjAxMX0.kJ73L8aUAstWxdS7bYYtMKON9n0SmmVqlCUambDKyMc",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
     },
   });
 
-  let result = await response.json();
+  const jsonResult = await response.json();
 
-  if (response.ok) {
-    try {
-      return result.payload;
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  return jsonResult;
 };
 
 const createHero = async (name, race, avatar, extraAbilities) => {
@@ -47,7 +35,7 @@ const createHero = async (name, race, avatar, extraAbilities) => {
     headers: {
       "content-type": "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTUzMTYwMTEsImV4cCI6MTcwMzA5MjAxMX0.kJ73L8aUAstWxdS7bYYtMKON9n0SmmVqlCUambDKyMc",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
     },
     body: JSON.stringify({ name, race, avatar, extraAbilities }),
   });
@@ -57,10 +45,25 @@ const createHero = async (name, race, avatar, extraAbilities) => {
   return jsonResult;
 };
 
+const deleteHero = async (heroID) => {
+  const response = await fetch(`${baseURL}/heroes/${heroID}`, {
+    method: "DELETE",
+    headers: {
+      "content-type": "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
+    },
+  });
+  const jsonResult = response.json();
+
+  return jsonResult;
+};
+
 const heroesService = {
   GetAllHeroes,
   getHero,
   createHero,
+  deleteHero,
 };
 
 export default heroesService;

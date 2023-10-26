@@ -89,9 +89,11 @@
 }
 
 .show-pass {
-  margin-left: -47px;
+  margin-left: -30px;
+  margin-top: 5px;
   color: white;
   cursor: pointer;
+  font-size: 24px;
 }
 
 .show-pass:hover {

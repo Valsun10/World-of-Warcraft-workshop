@@ -21,7 +21,7 @@ const createRace = async (name, heroClass, abilities) => {
     headers: {
       "content-type": "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTUzMTYwMTEsImV4cCI6MTcwMzA5MjAxMX0.kJ73L8aUAstWxdS7bYYtMKON9n0SmmVqlCUambDKyMc",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
     },
     body: JSON.stringify({ name, heroClass, abilities }),
   });
@@ -37,7 +37,7 @@ const getAllClasses = async (page, limit) => {
     headers: {
       "content-type": "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTUzMTYwMTEsImV4cCI6MTcwMzA5MjAxMX0.kJ73L8aUAstWxdS7bYYtMKON9n0SmmVqlCUambDKyMc",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
     },
     body: JSON.stringify({ page, limit }),
   });
@@ -53,7 +53,7 @@ const getAllRaces = async (page, limit) => {
     headers: {
       "content-type": "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTUzMTYwMTEsImV4cCI6MTcwMzA5MjAxMX0.kJ73L8aUAstWxdS7bYYtMKON9n0SmmVqlCUambDKyMc",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
     },
     body: JSON.stringify({ page, limit }),
   });

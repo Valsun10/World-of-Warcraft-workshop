@@ -42,6 +42,10 @@
   padding-top: 13px;
 }
 
+.details:hover {
+  color: white;
+}
+
 .details-normal-user {
   background-color: rgba(0, 0, 0, 0.2);
   color: burlywood;
@@ -62,6 +66,10 @@
   height: 100%;
   text-align: center;
   padding-top: 13px;
+}
+
+.delete:hover {
+  color: white;
 }
 
 @media (max-width: 600px) {
