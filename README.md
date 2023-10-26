@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This project is using that server: https://github.com/mariyanuzunov/heroes-demo-api/
+run npm install, then npm start
+This project is using that server: https://github.com/mariyanuzunov/heroes-demo-api/, then run the server(npm run dev)
 
 ## Available Scripts
 
