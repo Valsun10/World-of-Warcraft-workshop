@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:5000";
+const baseURL = "https://heroes-demo-api.onrender.com";
 
 const loginURL = baseURL + "/auth/sign-in";
 const registerURL = baseURL + "/auth/sign-up";

@@ -10,14 +10,17 @@ const Header = () => {
 
   const adminLinks = (
     <>
+      <Link to="/usersTable" className="links">
+        TableUsers
+      </Link>
+      <Link className="links" to="/create">
+        Create Hero
+      </Link>
       <Link className="links" to={"/createRace"}>
         Create Race
       </Link>
       <Link className="links" to={"/createClass"}>
         Create Class
-      </Link>
-      <Link className="links" to="/create">
-        Create Hero
       </Link>
       <Link className="links" to="/login" onClick={onLogout}>
         Logout

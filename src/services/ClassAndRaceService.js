@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:5000";
+const baseURL = "https://heroes-demo-api.onrender.com";
 
 const createClass = async (name, token) => {
   const response = await fetch(`${baseURL}/heroes/classes`, {

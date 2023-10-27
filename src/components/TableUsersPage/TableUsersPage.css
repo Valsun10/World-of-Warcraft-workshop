@@ -31,3 +31,29 @@ table td {
   border-right: 1px solid #ff32;
   color: #ff98;
 }
+
+.pagination-nav {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.pagination-nav span {
+  color: darkorange;
+  margin-right: 15px;
+  font-size: 22px;
+}
+
+.pagination-btn {
+  padding: 7px;
+  color: darkorange;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-right: 15px;
+  font-size: 22px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-btn:hover {
+  transform: scale(0.98);
+}

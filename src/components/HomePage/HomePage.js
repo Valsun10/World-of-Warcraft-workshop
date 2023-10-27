@@ -25,9 +25,6 @@ const GuestPage = ({ heroes, setHeroes }) => {
   return (
     <Wrapper>
       <div className="cards-content">
-        <Link to="/usersTable" className="links">
-          TableUsers
-        </Link>
         <h1 className="guest-title">All Cards in the Game</h1>
         {currentItems.length <= 0 ? (
           <p className="spinner">There are no cards in database!</p>

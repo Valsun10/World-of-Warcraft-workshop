@@ -1,79 +1,51 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./TableUsersPage.css";
 import Wrapper from "../Wrapper/Wrapper";
-import { useSortBy, useTable } from "react-table";
-import { format } from "date-fns";
+import {
+  useGlobalFilter,
+  usePagination,
+  useSortBy,
+  useTable,
+} from "react-table";
 import { IoArrowDownSharp } from "react-icons/io5";
 import { IoArrowUpOutline } from "react-icons/io5";
+import GroupedColumns from "./columns";
 
 import authService from "../../services/AuthService";
+import GlobalFilter from "./GlobalFilter";
 
 const TableUsersPage = () => {
   const [users, setUsers] = useState([]);
   const data = useMemo(() => users, [users]);
-  const columns = useMemo(
-    () => [
-      {
-        Header: "Id",
-        accessor: "_id",
-      },
-      {
-        Header: "User Info",
-        columns: [
-          {
-            Header: "Name",
-            accessor: "name",
-          },
-          {
-            Header: "E-mail",
-            accessor: "email",
-          },
-        ],
-      },
-      {
-        Header: "Role",
-        accessor: "role",
-      },
-      {
-        Header: "Gender",
-        accessor: "gender",
-      },
-      {
-        Header: "Dates",
-        columns: [
-          {
-            Header: "Created on",
-            accessor: "createdAt",
-            Cell: ({ value }) => {
-              return format(new Date(value), "dd/MM/yyyy");
-            },
-          },
-          {
-            Header: "Updated on",
-            accessor: "updatedAt",
-            Cell: ({ value }) => {
-              return format(new Date(value), "dd/MM/yyyy");
-            },
-          },
-        ],
-      },
-    ],
-    []
-  );
+  const columns = useMemo(() => GroupedColumns, []);
 
   useEffect(() => {
     authService.GetAllUsers().then((data) => setUsers(data));
   }, []);
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data }, useSortBy);
-
-  console.log(headerGroups);
-  console.log(rows);
-  console.log(users);
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    state: { pageIndex, pageSize, globalFilter },
+    pageOptions,
+    setGlobalFilter,
+    prepareRow,
+  } = useTable(
+    { columns, data, initialState: { pageIndex: 0, pageSize: 3 } },
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  );
 
   return (
     <Wrapper>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <table {...getTableProps}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -98,7 +70,7 @@ const TableUsersPage = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps}>
-          {rows.map((row) => {
+          {page.map((row) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -112,6 +84,25 @@ const TableUsersPage = () => {
           })}
         </tbody>
       </table>
+      <div className="pagination-nav">
+        <span>
+          {pageIndex + 1} of <strong>{pageOptions.length}</strong>
+        </span>
+        <button
+          className="pagination-btn"
+          onClick={() => previousPage()}
+          disabled={!canPreviousPage}
+        >
+          Previous
+        </button>
+        <button
+          className="pagination-btn"
+          onClick={() => nextPage()}
+          disabled={!canNextPage}
+        >
+          Next
+        </button>
+      </div>
     </Wrapper>
   );
 };

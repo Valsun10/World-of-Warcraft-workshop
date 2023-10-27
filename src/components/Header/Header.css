@@ -39,12 +39,12 @@
 }
 
 .left-nav {
-  width: 30%;
+  width: 20%;
   padding-left: 10px;
 }
 
 .right-nav {
-  width: 70%;
+  width: 80%;
   text-align: end;
   padding-right: 10px;
   display: flex;
