@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import "./RegisterPage.css";
 import authService from "../../services/AuthService";
@@ -10,7 +10,7 @@ const RegisterPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("male");
 
   const registerSubmitHandler = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const RegisterPage = () => {
       if (response.success) {
         navigate("/login");
       } else {
-        alert(response.message);
+        alert(response.message); //toast
         console.log(response.message);
       }
     });
