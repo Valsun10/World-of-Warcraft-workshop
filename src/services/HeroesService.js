@@ -15,12 +15,11 @@ const GetAllHeroes = async () => {
   return jsonResult;
 };
 
-const getHero = async (heroId) => {
+const getHero = async (heroId, token) => {
   const response = await fetch(`${baseURL}/heroes/${heroId}`, {
     method: "GET",
     headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -29,13 +28,12 @@ const getHero = async (heroId) => {
   return jsonResult;
 };
 
-const createHero = async (name, race, avatar, extraAbilities) => {
+const createHero = async (name, race, avatar, extraAbilities, token) => {
   const response = await fetch(`${baseURL}/heroes`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, race, avatar, extraAbilities }),
   });
@@ -45,13 +43,12 @@ const createHero = async (name, race, avatar, extraAbilities) => {
   return jsonResult;
 };
 
-const deleteHero = async (heroID) => {
+const deleteHero = async (heroID, token) => {
   const response = await fetch(`${baseURL}/heroes/${heroID}`, {
     method: "DELETE",
     headers: {
       "content-type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
+      Authorization: `Bearer ${token}`,
     },
   });
   const jsonResult = response.json();

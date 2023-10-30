@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(initialState);
 
   const onLogin = (authData) => {
-    localStorage.setItem("token", authData.payload.token);
     setUser({
       accessToken: authData.payload.token,
       email: authData.payload.user.email,
@@ -22,12 +21,12 @@ export const AuthProvider = ({ children }) => {
       gender: authData.payload.user.gender,
       role: authData.payload.user.role,
     });
-    console.log(authData);
+    localStorage.setItem("token", JSON.stringify(authData.payload.token));
   };
 
   const onLogout = () => {
-    localStorage.removeItem("token");
     setUser(initialState);
+    localStorage.removeItem("token");
   };
 
   const value = {

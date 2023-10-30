@@ -18,7 +18,6 @@ const LoginPage = () => {
 
   const handleShowPassword = () => {
     setShowPassword((state) => !state);
-    setIsValid((state) => !state);
   };
 
   const submitHandler = (e) => {
@@ -71,7 +70,7 @@ const LoginPage = () => {
             value={passwordInputValue}
           />
           <div className="show-pass" onClick={handleShowPassword}>
-            {isValid ? <IoEyeSharp /> : <IoEyeOffSharp />}
+            {!showPassword ? <IoEyeSharp /> : <IoEyeOffSharp />}
           </div>
         </div>
         <button className="btn">Login</button>

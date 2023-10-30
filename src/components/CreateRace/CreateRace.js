@@ -3,6 +3,7 @@ import "./CreateRace.css";
 import Wrapper from "../Wrapper/Wrapper";
 import classAndRaceService from "../../services/ClassAndRaceService";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/authContext";
 
 const CreateRace = () => {
   const [classes, setClasses] = useState([]);
@@ -11,11 +12,12 @@ const CreateRace = () => {
   const [abilityOne, setAbilityOne] = useState("");
   const [abilityTwo, setAbilityTwo] = useState("");
   const [abilityThree, setAbilityThree] = useState("");
+  const { user } = useAuthContext();
 
   const abilities = [abilityOne, abilityTwo, abilityThree];
 
   useEffect(() => {
-    classAndRaceService.getAllClasses(1, 15).then((data) => {
+    classAndRaceService.getAllClasses(1, 15, user.accessToken).then((data) => {
       setClasses(data.payload.docs);
     });
   }, [classIdValue]);
@@ -31,7 +33,7 @@ const CreateRace = () => {
     e.preventDefault();
 
     classAndRaceService
-      .createRace(raceInput, classIdValue, abilities)
+      .createRace(raceInput, classIdValue, abilities, user.accessToken)
       .then((response) => {
         if (response.success) {
           alert(`${raceInput} has been created!`);

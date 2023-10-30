@@ -3,6 +3,7 @@ import "./CreateHero.css";
 import Wrapper from "../Wrapper/Wrapper";
 import classAndRaceService from "../../services/ClassAndRaceService";
 import heroesService from "../../services/HeroesService";
+import { useAuthContext } from "../../context/authContext";
 
 const CreateHero = ({ setHeroes }) => {
   const [races, setRaces] = useState([]);
@@ -10,6 +11,7 @@ const CreateHero = ({ setHeroes }) => {
   const [raceIdValue, setRaceIdValue] = useState("");
   const [imgURLvalue, setImgURLvalue] = useState("");
   const [extraAbility, setExtraAbility] = useState("");
+  const { user } = useAuthContext();
 
   const extraAbilityArray = [extraAbility];
 
@@ -21,7 +23,7 @@ const CreateHero = ({ setHeroes }) => {
 
   useEffect(() => {
     classAndRaceService
-      .getAllRaces(1, 15)
+      .getAllRaces(1, 15, user.accessToken)
       .then((response) => setRaces(response.payload.docs));
     console.log(raceName);
   }, [raceIdValue]);
@@ -30,7 +32,13 @@ const CreateHero = ({ setHeroes }) => {
     e.preventDefault();
 
     heroesService
-      .createHero(raceName, raceIdValue, imgURLvalue, extraAbilityArray)
+      .createHero(
+        raceName,
+        raceIdValue,
+        imgURLvalue,
+        extraAbilityArray,
+        user.accessToken
+      )
       .then((response) => {
         if (response.success) {
           setHeroes(response.payload);

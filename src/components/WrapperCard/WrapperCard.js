@@ -9,7 +9,7 @@ const WrapperCard = ({ hero, heroes, setHeroes }) => {
   const { user } = useAuthContext();
 
   const handleDelete = (heroId) => {
-    heroesService.deleteHero(heroId).then((response) => {
+    heroesService.deleteHero(heroId, user.accessToken).then((response) => {
       if (response.success) {
         const updatedHeroList = heroes.filter((hero) => hero._id !== heroId);
         setHeroes(updatedHeroList);

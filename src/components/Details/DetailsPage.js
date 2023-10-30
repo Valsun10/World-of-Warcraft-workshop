@@ -3,13 +3,15 @@ import { useParams } from "react-router-dom";
 import Wrapper from "../Wrapper/Wrapper";
 import "./DetailsPage.css";
 import heroesService from "./../../services/HeroesService";
+import { useAuthContext } from "../../context/authContext";
 
 const DetailsPage = () => {
   const { heroId } = useParams();
   const [hero, setHero] = useState({});
+  const { user } = useAuthContext();
 
   useEffect(() => {
-    heroesService.getHero(heroId).then((res) => {
+    heroesService.getHero(heroId, user.accessToken).then((res) => {
       setHero(res.payload);
       console.log(res);
     });

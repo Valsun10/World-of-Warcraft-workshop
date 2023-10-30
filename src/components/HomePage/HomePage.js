@@ -3,7 +3,6 @@ import Wrapper from "../Wrapper/Wrapper";
 import WrapperCard from "../WrapperCard/WrapperCard";
 import "./HomePage.css";
 import ReactPaginate from "react-paginate";
-import { Link } from "react-router-dom";
 
 const GuestPage = ({ heroes, setHeroes }) => {
   const [currentItems, setCurrentItems] = useState([]);

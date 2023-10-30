@@ -7,19 +7,21 @@ import { useAuthContext } from "../../context/authContext";
 
 const CreateClass = () => {
   const [classInput, setClassInput] = useState("");
-  const { token } = useAuthContext();
+  const { user } = useAuthContext();
 
   const classSubmitHandler = (e) => {
     e.preventDefault();
 
-    classAndRaceService.createClass(classInput, token).then((response) => {
-      if (response.success) {
-        setClassInput("");
-        alert(`${classInput} has been created!`);
-      } else {
-        console.log(response.message);
-      }
-    });
+    classAndRaceService
+      .createClass(classInput, user.accessToken)
+      .then((response) => {
+        if (response.success) {
+          setClassInput("");
+          alert(`${classInput} has been created!`);
+        } else {
+          console.log(response.message);
+        }
+      });
   };
 
   return (

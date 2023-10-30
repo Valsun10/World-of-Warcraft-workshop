@@ -22,7 +22,6 @@ function App() {
   useEffect(() => {
     heroesService.GetAllHeroes().then((res) => {
       setHeroes(res.payload.docs);
-      console.log(heroes);
     });
   }, []);
 

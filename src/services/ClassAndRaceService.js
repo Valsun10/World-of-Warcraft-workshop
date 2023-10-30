@@ -5,7 +5,7 @@ const createClass = async (name, token) => {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      Authorization: "Bearer " + token,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name }),
   });
@@ -15,13 +15,12 @@ const createClass = async (name, token) => {
   return jsonResult;
 };
 
-const createRace = async (name, heroClass, abilities) => {
+const createRace = async (name, heroClass, abilities, token) => {
   const response = await fetch(`${baseURL}/heroes/races`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, heroClass, abilities }),
   });
@@ -31,13 +30,12 @@ const createRace = async (name, heroClass, abilities) => {
   return jsonResult;
 };
 
-const getAllClasses = async (page, limit) => {
+const getAllClasses = async (page, limit, token) => {
   const response = await fetch(`${baseURL}/heroes/classes/list`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ page, limit }),
   });
@@ -47,13 +45,12 @@ const getAllClasses = async (page, limit) => {
   return jsonResult;
 };
 
-const getAllRaces = async (page, limit) => {
+const getAllRaces = async (page, limit, token) => {
   const response = await fetch(`${baseURL}/heroes/races/list`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ page, limit }),
   });
