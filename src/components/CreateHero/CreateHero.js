@@ -5,7 +5,7 @@ import classAndRaceService from "../../services/ClassAndRaceService";
 import heroesService from "../../services/HeroesService";
 import { useAuthContext } from "../../context/authContext";
 
-const CreateHero = ({ setHeroes }) => {
+const CreateHero = () => {
   const [races, setRaces] = useState([]);
   const [raceName, setRaceName] = useState("");
   const [raceIdValue, setRaceIdValue] = useState("");
@@ -25,7 +25,6 @@ const CreateHero = ({ setHeroes }) => {
     classAndRaceService
       .getAllRaces(1, 15, user.accessToken)
       .then((response) => setRaces(response.payload.docs));
-    console.log(raceName);
   }, [raceIdValue]);
 
   const createHeroSubmit = (e) => {
@@ -41,8 +40,6 @@ const CreateHero = ({ setHeroes }) => {
       )
       .then((response) => {
         if (response.success) {
-          setHeroes(response.payload);
-          alert(`${raceName} has been created!`);
           clearInputs();
           console.log(response);
         } else {

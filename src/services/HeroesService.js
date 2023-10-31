@@ -1,18 +1,17 @@
 const baseURL = "https://heroes-demo-api.onrender.com";
 
-const GetAllHeroes = async () => {
+const GetAllHeroes = async (token) => {
   const response = await fetch(`${baseURL}/heroes/list`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgwNjAzNDQsImV4cCI6MTcwNTgzNjM0NH0.tZkOHoTXWtGsl0LP0NUNsVRVZnkob_uoZFGOm9JsnbI",
+      Authorization: `Bearer ${token}`,
     },
   });
 
-  let jsonResult = await response.json();
+  const jsonResult = await response.json();
 
-  return jsonResult;
+  return jsonResult.payload.docs;
 };
 
 const getHero = async (heroId, token) => {

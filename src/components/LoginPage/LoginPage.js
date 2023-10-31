@@ -11,7 +11,6 @@ const LoginPage = () => {
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isValid, setIsValid] = useState(true);
 
   const { onLogin } = useAuthContext();
   const navigate = useNavigate();
@@ -23,26 +22,14 @@ const LoginPage = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if (emailInputValue.trim() === "") {
-      setIsValid(false);
-      return;
-    }
-
-    authService
-      .login(emailInputValue, passwordInputValue)
-      .then((response) => {
-        if (response.success) {
-          onLogin(response);
-          setIsValid(true);
-          navigate("/");
-        } else {
-          alert(response.message);
-          console.log(response.message);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    authService.login(emailInputValue, passwordInputValue).then((response) => {
+      if (response.success) {
+        onLogin(response);
+        navigate("/");
+      } else {
+        console.log(response.message);
+      }
+    });
   };
 
   return (
@@ -57,7 +44,6 @@ const LoginPage = () => {
             id="email"
             onChange={(e) => setEmailInputValue(e.target.value)}
             value={emailInputValue}
-            className={isValid ? "" : "wrong-email"}
           />
         </div>
         <label htmlFor="password">Enter your Password:</label>

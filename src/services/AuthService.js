@@ -34,8 +34,7 @@ const getCurrentUser = async (token) => {
   const options = {
     method: "GET",
     headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjNzgyOWQ2N2ZiYzRiNTFmYTVhMzAiLCJpYXQiOjE2OTgyNDA1MDMsImV4cCI6MTcwNjAxNjUwM30.KKcg8HOMUFlaqpWrF7VZMc4WqhipArv8KLcVDvEe4hk",
+      Authorization: `Bearer ${token}`,
     },
   };
 

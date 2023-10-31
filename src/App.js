@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import LoginPage from "./components/LoginPage/LoginPage";
@@ -12,28 +12,39 @@ import CreateRace from "./components/CreateRace/CreateRace";
 import RequireAuth from "./guards/RequireAuth";
 import RequireGuest from "./guards/RequireGuest";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
-import { useEffect, useState } from "react";
-import heroesService from "./services/HeroesService";
+import { useEffect } from "react";
 import TableUsersPage from "./components/TableUsersPage/TableUsersPage";
+import authService from "./services/AuthService";
+import { useAuthContext } from "./context/authContext";
 
 function App() {
-  const [heroes, setHeroes] = useState([]);
+  const { setUser } = useAuthContext();
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    heroesService.GetAllHeroes().then((res) => {
-      setHeroes(res.payload.docs);
-    });
+    if (token) {
+      authService.getCurrentUser(token).then((Authdata) => {
+        setUser({
+          accessToken: token,
+          email: Authdata.email,
+          name: Authdata.name,
+          gender: Authdata.gender,
+          role: Authdata.role,
+        });
+      });
+    } else {
+      navigate("/login");
+    }
   }, []);
 
   return (
     <div className="App">
       <Header />
+
       <main className="main">
         <Routes>
-          <Route
-            path="/"
-            element={<HomePage heroes={heroes} setHeroes={setHeroes} />}
-          />
+          <Route path="/" element={<HomePage />} />
           <Route
             path="/profile"
             element={
@@ -54,7 +65,7 @@ function App() {
             path="/create"
             element={
               <RequireAuth>
-                <CreateHero setHeroes={setHeroes} />
+                <CreateHero />
               </RequireAuth>
             }
           />
@@ -101,7 +112,6 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
-
       <Footer />
     </div>
   );

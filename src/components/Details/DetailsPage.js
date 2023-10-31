@@ -7,34 +7,43 @@ import { useAuthContext } from "../../context/authContext";
 
 const DetailsPage = () => {
   const { heroId } = useParams();
-  const [hero, setHero] = useState({});
+  const [hero, setHero] = useState({
+    avatar: "",
+    name: "",
+    race: "",
+    class: "",
+    abilityOne: "",
+    abilityTwo: "",
+    abilityThree: "",
+  });
   const { user } = useAuthContext();
 
   useEffect(() => {
     heroesService.getHero(heroId, user.accessToken).then((res) => {
-      setHero(res.payload);
-      console.log(res);
+      setHero({
+        avatar: res.payload.avatar,
+        name: res.payload.name,
+        race: res.payload.race.name,
+        class: res.payload.race.heroClass.name,
+        abilityOne: res.payload.race.abilities[0],
+        abilityTwo: res.payload.race.abilities[1],
+        abilityThree: res.payload.race.abilities[2],
+      });
     });
   }, []);
-
-  const { avatar, name, race } = hero;
-
-  if (!hero) {
-    return <p>Spinner</p>;
-  }
 
   return (
     <Wrapper>
       <div className="wrapper-details">
-        <img src={avatar} alt="ThrallPic" />
-        <h1>{name}</h1>
-        {/* <p>{race.name}</p>
-        <p>{race.heroClas}</p>
+        <img src={hero.avatar} alt="ThrallPic" />
+        <h1>{hero.name}</h1>
+        <p>{hero.race}</p>
+        <p>{hero.class}</p>
         <div className="abilities">
-          <span>{race.abilities[0]}</span>
-          <span>{race.abilities[1]}</span>
-          <span>{race.abilities[2]}</span>
-        </div> */}
+          <span>{hero.abilityOne}</span>
+          <span>{hero.abilityTwo}</span>
+          <span>{hero.abilityThree}</span>
+        </div>
       </div>
     </Wrapper>
   );

@@ -3,12 +3,24 @@ import Wrapper from "../Wrapper/Wrapper";
 import WrapperCard from "../WrapperCard/WrapperCard";
 import "./HomePage.css";
 import ReactPaginate from "react-paginate";
+import heroesService from "../../services/HeroesService";
+import { useAuthContext } from "../../context/authContext";
 
-const GuestPage = ({ heroes, setHeroes }) => {
+const GuestPage = () => {
+  const [heroes, setHeroes] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  const { user } = useAuthContext();
+
   const itemsPerPage = 8;
+
+  useEffect(() => {
+    if (user.accessToken)
+      heroesService.GetAllHeroes(user.accessToken).then((data) => {
+        setHeroes(data);
+      });
+  }, [user.accessToken]);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -26,7 +38,7 @@ const GuestPage = ({ heroes, setHeroes }) => {
       <div className="cards-content">
         <h1 className="guest-title">All Cards in the Game</h1>
         {currentItems.length <= 0 ? (
-          <p className="spinner">There are no cards in database!</p>
+          <p className="spinner">Heroes are Loading!</p>
         ) : (
           currentItems.map((hero) => (
             <WrapperCard

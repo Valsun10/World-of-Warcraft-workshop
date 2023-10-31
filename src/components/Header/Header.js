@@ -78,7 +78,7 @@ const Header = () => {
     </div>
   );
 
-  const headerNav = user.accessToken === "" ? guestNav : userNav;
+  const headerNav = user.email === "" ? guestNav : userNav;
 
   return <div className="header">{headerNav}</div>;
 };

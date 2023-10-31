@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
       gender: authData.payload.user.gender,
       role: authData.payload.user.role,
     });
-    localStorage.setItem("token", JSON.stringify(authData.payload.token));
+    localStorage.setItem("token", authData.payload.token);
   };
 
   const onLogout = () => {
