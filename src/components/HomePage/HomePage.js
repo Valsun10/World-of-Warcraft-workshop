@@ -5,6 +5,7 @@ import "./HomePage.css";
 import ReactPaginate from "react-paginate";
 import heroesService from "../../services/HeroesService";
 import { useAuthContext } from "../../context/authContext";
+import Spinner from "react-bootstrap/Spinner";
 
 const GuestPage = () => {
   const [heroes, setHeroes] = useState([]);
@@ -38,7 +39,9 @@ const GuestPage = () => {
       <div className="cards-content">
         <h1 className="guest-title">All Cards in the Game</h1>
         {currentItems.length <= 0 ? (
-          <p className="spinner">Heroes are Loading!</p>
+          <p className="spinner">
+            <Spinner animation="border" role="status" />
+          </p>
         ) : (
           currentItems.map((hero) => (
             <WrapperCard

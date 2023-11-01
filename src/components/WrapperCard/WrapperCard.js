@@ -58,9 +58,7 @@ const WrapperCard = ({ hero, heroes, setHeroes }) => {
           alt={name}
         />
       </div>
-      <p className="name-and-race">
-        {name} | {race.name}
-      </p>
+      <p className="name-and-race">{name}</p>
       <div className="card-nav">
         {user.role === "admin" ? adminNav : normalUserNav}
       </div>
