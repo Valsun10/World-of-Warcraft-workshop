@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-run npm install, then npm start, admin Profile: din@test.com / 123456
+run npm install, then npm start, Admin Profile: din@test.com / 123456
 
 ## Available Scripts
 
