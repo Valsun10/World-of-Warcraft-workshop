@@ -1,3 +1,15 @@
+.cards-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+  gap: 45px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
 .guest-title {
   font-size: 65px;
   color: burlywood;
@@ -42,22 +54,8 @@
   color: white;
 }
 
-@media (max-width: 800px) {
-  .cards-content {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-  }
-
-  .guest-title {
-    font-size: 28px;
-    margin: 0 auto;
-  }
-}
-
 @media (max-width: 1000px) {
-  .cards-content {
+  .cards-content-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +63,24 @@
   }
 
   .guest-title {
-    font-size: 47px;
+    font-size: 40px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .cards-content-wrapper {
+    margin: 0 auto;
+  }
+
+  .cards-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    background-color: red;
+  }
+  .guest-title {
+    font-size: 27px;
     margin: 0 auto;
   }
 }

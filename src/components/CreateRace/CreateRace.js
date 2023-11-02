@@ -63,7 +63,7 @@ const CreateRace = () => {
           value={classIdValue}
         >
           {classes.map((classEl) => (
-            <option className="options" key={classEl._id} value={classEl._id}>
+            <option key={classEl._id} value={classEl._id}>
               {classEl.name}
             </option>
           ))}

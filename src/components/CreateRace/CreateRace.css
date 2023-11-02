@@ -1,16 +1,5 @@
 .create-class-form label {
-  padding-top: 20px;
-}
-
-.create-class-form select {
-  margin-top: 15px;
-  font-size: 20px;
-  background-color: transparent;
-  color: darkorange;
-  border: 2px solid darkorange;
-  padding-top: 15px;
-  text-align: center;
-  outline: none;
+  padding: 20px 0;
 }
 
 .create-race-heading {
@@ -19,4 +8,11 @@
   letter-spacing: 1.5px;
   padding-top: 25px;
   text-align: center;
+  margin: 0 auto;
+}
+
+@media (max-width: 560px) {
+  .create-race-heading {
+    font-size: 35px;
+  }
 }

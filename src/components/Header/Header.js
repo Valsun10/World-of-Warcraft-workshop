@@ -65,7 +65,7 @@ const Header = () => {
         </Link>
       </div>
       <div className="right-nav">
-        <p style={{ color: "white", fontSize: "19px" }}>Welcome {user.email}</p>
+        <p className="links-welcome">Welcome {user.email}</p>
         <Link className="links" to="/profile">
           <img
             src={profilepic}

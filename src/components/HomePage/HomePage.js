@@ -36,12 +36,14 @@ const GuestPage = () => {
 
   return (
     <Wrapper>
-      <div className="cards-content">
-        <h1 className="guest-title">All Cards in the Game</h1>
+      <h1 className="guest-title">All Cards in the Game</h1>
+      <div className="cards-content-wrapper">
         {currentItems.length <= 0 ? (
-          <p className="spinner">
-            <Spinner animation="border" role="status" />
-          </p>
+          <Spinner
+            style={{ height: "60vh" }}
+            animation="border"
+            role="status"
+          />
         ) : (
           currentItems.map((hero) => (
             <WrapperCard

@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: start;
   padding-top: 50px;
+  margin: 0 auto;
 }
 
 .create-class-form label {
@@ -37,4 +38,14 @@
   letter-spacing: 1.5px;
   padding-top: 25px;
   text-align: center;
+}
+
+@media (max-width: 560px) {
+  .create-class-heading {
+    font-size: 35px;
+  }
+
+  .create-class-form label {
+    font-size: 25px;
+  }
 }

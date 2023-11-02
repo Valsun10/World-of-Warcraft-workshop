@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Wrapper from "../Wrapper/Wrapper";
 import "./DetailsPage.css";
 import heroesService from "./../../services/HeroesService";
 import { useAuthContext } from "../../context/authContext";
+import { FaCaretLeft } from "react-icons/fa6";
 
 const DetailsPage = () => {
   const { heroId } = useParams();
@@ -35,6 +36,12 @@ const DetailsPage = () => {
   return (
     <Wrapper>
       <div className="wrapper-details">
+        <div className="nav-details">
+          <FaCaretLeft style={{ fontSize: "22px" }} />
+          <Link to="/" class="back-link">
+            Back
+          </Link>
+        </div>
         <img src={hero.avatar} alt="ThrallPic" />
         <h1>{hero.name}</h1>
         <p>{hero.race}</p>

@@ -122,3 +122,20 @@
 .btn-disabled {
   cursor: not-allowed;
 }
+
+@media (max-width: 560px) {
+  .login-form h1 {
+    font-size: 42px;
+  }
+  .login-form label {
+    font-size: 22px;
+  }
+
+  .login-form input {
+    font-size: 22px;
+  }
+
+  .btn {
+    font-size: 22px;
+  }
+}

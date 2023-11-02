@@ -20,7 +20,6 @@ import { useAuthContext } from "./context/authContext";
 function App() {
   const { setUser } = useAuthContext();
   const token = localStorage.getItem("token");
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
@@ -33,8 +32,6 @@ function App() {
           role: Authdata.role,
         });
       });
-    } else {
-      navigate("/login");
     }
   }, []);
 
@@ -44,7 +41,14 @@ function App() {
 
       <main className="main">
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/"
+            element={
+              <RequireAuth>
+                <HomePage />
+              </RequireAuth>
+            }
+          />
           <Route
             path="/profile"
             element={

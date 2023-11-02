@@ -5,11 +5,18 @@
   padding-bottom: 40px;
   display: flex;
   justify-content: center;
+  gap: 45px;
   align-items: center;
 }
 
-.footer a {
+.footer-links {
   color: white;
-  padding-left: 45px;
+  font-size: 22px;
   text-decoration: none;
+}
+
+@media (max-width: 560px) {
+  .footer-links {
+    font-size: 15px;
+  }
 }
